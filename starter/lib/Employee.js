@@ -2,10 +2,31 @@
 
 class Employee {
     constructor(name, id, email) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-    }
+        if (typeof name !== "string" || typeof id !== "number" || typeof email !== "string") {
+            throw new Error("Invalid input");
+        }
+
+        if (!name) {
+            throw new Error('Name is required');
+        } else {
+            this.name = name;
+        }
+
+        if (!email) {
+            throw new Error(`Name cannot be null or undefined`);
+        } else if (email.indexOf('@') === -1) {
+            throw new Error(`Email must contain '@'`);
+        } else {
+            this.email = email;
+        }
+
+        if ((id <= 0)) {
+            throw new Error("Id should be a positive number");
+        } else {
+            this.id = id;
+        }
+
+    };
     getName() {
         return this.name;
     };
