@@ -94,6 +94,46 @@ function addEngineer() {
         .then(() => option())
 }
 
+function addIntern() {
+    const intern_questions = [
+        {
+            type: "input",
+            message: "Intern's name?",
+            name: "internName",
+            required: true
+        },
+        {
+            type: "input",
+            message: "Intern's Id?",
+            name: "internId",
+            required: true
+        },
+        {
+            type: "input",
+            message: "Intern's email?",
+            name: "internEmail",
+            required: true,
+            validate: function (email) {
+                return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+            }
+        },
+        {
+            type: "input",
+            message: "Intern's school name?",
+            name: "school",
+            required: true
+        }
+    ]
+    inquirer
+        .prompt(intern_questions)
+        .then((response) => {
+            EmployeeArray.push(new Intern(name = response.internName, id = response.internId, email = response.internEmail, github = response.school));
+        }
+        )
+        .then(() => option())
+};
+
+
 const questions = [
     {
         type: 'list',
