@@ -55,6 +55,18 @@ function init() {
         .then(() => option())
 }
 
+const questions = [
+    {
+        type: 'list',
+        message: "Provide the project license.",
+        name: 'option',
+        choices: ['Add an engineer', 'Add an intern', 'Finish building the team'],
+        required: true,
+        default: 'Add an engineer'
+    }
+];
+
+
 function option() {
     inquirer
         .prompt(questions)
