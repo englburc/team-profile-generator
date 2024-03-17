@@ -46,10 +46,13 @@ function init() {
             required: true
         }
     ]
+
     inquirer
         .prompt(manager_questions)
         .then((response) => {
-            EmployeeArray.push(new Manager(name = response.managerName, id = response.managerId, email = response.managerEmail, officeNumber = response.officeNumber));
+            // EmployeeArray.push(new Manager(name = response.managerName, id = response.managerId, email = response.managerEmail, officeNumber = response.officeNumber));
+            EmployeeArray.push(new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNumber));
+
         }
         )
         .then(() => option())
@@ -88,7 +91,9 @@ function addEngineer() {
     inquirer
         .prompt(engineer_questions)
         .then((response) => {
-            EmployeeArray.push(new Engineer(name = response.engineerName, id = response.engineerId, email = response.engineerEmail, github = response.github));
+            // EmployeeArray.push(new Engineer(name = response.engineerName, id = response.engineerId, email = response.engineerEmail, github = response.github));
+            EmployeeArray.push(new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.github));
+
         }
         )
         .then(() => option())
@@ -124,10 +129,13 @@ function addIntern() {
             required: true
         }
     ]
+
     inquirer
         .prompt(intern_questions)
         .then((response) => {
-            EmployeeArray.push(new Intern(name = response.internName, id = response.internId, email = response.internEmail, github = response.school));
+            // EmployeeArray.push(new Intern(name = response.internName, id = response.internId, email = response.internEmail, github = response.school));
+            EmployeeArray.push(new Intern(response.internName, response.internId, response.internEmail, response.school));
+
         }
         )
         .then(() => option())
@@ -166,4 +174,4 @@ function writeToFile(fileName, data) {
     fs.writeFile(file = fileName,
         data, (err) => err ? console.error(err) : console.log('html created!'))
 };
-
+init()
