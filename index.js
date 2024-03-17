@@ -55,6 +55,45 @@ function init() {
         .then(() => option())
 }
 
+function addEngineer() {
+    const engineer_questions = [
+        {
+            type: "input",
+            message: "Engineer's name?",
+            name: "engineerName",
+            required: true
+        },
+        {
+            type: "input",
+            message: "Engineer's Id?",
+            name: "engineerId",
+            required: true
+        },
+        {
+            type: "input",
+            message: "Engineer's email?",
+            name: "engineerEmail",
+            required: true,
+            validate: function (email) {
+                return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+            }
+        },
+        {
+            type: "input",
+            message: "Engineer's GitHub username?",
+            name: "github",
+            required: true
+        }
+    ]
+    inquirer
+        .prompt(engineer_questions)
+        .then((response) => {
+            EmployeeArray.push(new Engineer(name = response.engineerName, id = response.engineerId, email = response.engineerEmail, github = response.github));
+        }
+        )
+        .then(() => option())
+}
+
 const questions = [
     {
         type: 'list',
@@ -86,4 +125,5 @@ function option() {
 function writeToFile(fileName, data) {
     fs.writeFile(file = fileName,
         data, (err) => err ? console.error(err) : console.log('html created!'))
-}
+};
+
