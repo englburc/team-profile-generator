@@ -25,3 +25,8 @@ As a manager a user want to generate a webpage that displays the team's basic in
       * Email
       * School
     * When a user decides to finish building their team then they exit the application, and the HTML is generated.
+
+    ## Pictures
+
+    ![screenshot of generated file](./assets/generated-team.png)
+    
