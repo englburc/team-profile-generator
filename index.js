@@ -174,4 +174,5 @@ function writeToFile(fileName, data) {
     fs.writeFile(file = fileName,
         data, (err) => err ? console.error(err) : console.log('html created!'))
 };
+
 init()
